@@ -14,12 +14,7 @@ echo "Java installation completed"
 ## Step2: Enable the Jenkins repository
 # Check if the wget command is installed; if not installed it
 
-if ! command -v wget &> /dev/null
-then
-    echo "wget command could not be found"
-else
-    yum install wget -y
-fi
+yum install wget -y
 
 wget -O /etc/yum.repos.d/jenkins.repo http://pkg.jenkins-ci.org/redhat/jenkins.repo
 
@@ -40,13 +35,28 @@ systemctl status jenkins
 
 # Enable the Jenkins service to start on system boot
 
-systemctl enable jenkins 
+systemctl enable jenkins
 
 ##Step4: Adjust the firewall
+
+yum install firewalld -y
+systemctl start firewalld
 
 firewall-cmd --permanent --zone=public --add-port=8080/tcp
 
 firewall-cmd --reload
 
 echo "Jenkins Installation and configuration completed"
-echo "Launch your google chrome browser an type your IP address followed by the port number 8080"
+
+echo "copy the the IP address displayed, Launch your google chrome browser an type the IP address(inet) followed by the port number 8080 below and paste it on your browser"
+
+ifconfig | grep 192
+
+echo "To set up Jenkins in the browser:"
+echo "copy the password displayed below and paste it on the jenkins first loginas administrator"
+
+cat /var/lib/jenkins/secrets/initialAdminPassword
+
+echo "Once login as admin, click on Install suggested plugins and create your first admin user with Username: utrains /  Password: school1"
+
+#End: Enjoy Jenkins
