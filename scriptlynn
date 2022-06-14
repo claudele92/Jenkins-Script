@@ -1,0 +1,21 @@
+#!/bin/bash
+
+## Date : 06-12-2022
+## Author : Lynn
+##-------- script for the installation of jenkins. In root ------------
+yum install wget -y
+wget -O /etc/yum.repos.d/jenkins.repo http://pkg.jenkins-ci.org/redhat/jenkins.repo
+sed -i 's/gpgcheck=1/gpgcheck=0/g' /etc/yum.repos.d/jenkins.repo
+yum install jenkins -y
+systemctl start jenkins
+sleep 2
+systemctl status jenkins
+sleep 2
+systemctl enable jenkins
+sleep 5
+firewall-cmd --permanent --zone=public --add-port=8080/tcp  
+firewall-cmd --reload
+echo "the ip and port will be displayed. with syntax <ip:port>"
+sleep 3
+ifconfig | grep 192
+cat /var/lib/jenkins/secrets/initialAdminPassword
