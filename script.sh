@@ -1,6 +1,6 @@
 #!/bin/bash
 
-    #Authors: Lynn, Arthur, Nora, Rebecca, Nadine
+    #Authors: Claudele
     #Date: 13-June-2022
 
 ## Writing a script to automate Jenkins installation and Configuration
