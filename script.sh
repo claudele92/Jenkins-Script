@@ -9,7 +9,7 @@
 # Step1: Install Java since Jenkins is a Java application
 echo "Java installation start"
 
-yum install java-1.8.0-openjdk-devel -y
+yum install java-11-openjdk -y
 if [ $? -eq 0 ]
 then 
 echo "Java installation successfull"
